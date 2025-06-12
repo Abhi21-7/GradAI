@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { generateAIInsights } from "./dashboard";
 
-async function createUserIfNotExists(userId) {
+export async function createUserIfNotExists(userId) {
   let user = await db.user.findUnique({
     where: { clerkUserId: userId },
   });

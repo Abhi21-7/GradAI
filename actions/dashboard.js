@@ -3,6 +3,7 @@
 import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { createUserIfNotExists } from "./user";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -39,6 +40,8 @@ export const generateAIInsights = async (industry) => {
 export async function getIndustryInsights() {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
+
+  await createUserIfNotExists(userId);
 
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
