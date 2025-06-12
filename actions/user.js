@@ -14,7 +14,7 @@ export async function createUserIfNotExists(userId) {
     user = await db.user.create({
       data: {
         clerkUserId: userId,
-        email: "", // Optional: can update later
+        // email field omitted to avoid unique constraint error
       },
     });
   }
