@@ -68,17 +68,17 @@ export async function updateUser(data) {
 }
 
 export async function getUserOnboardingStatus() {
-  const { userId } = await auth();
-  if (!userId) throw new Error("Unauthorized");
-
-  const user = await db.user.findUnique({
-    where: { clerkUserId: userId },
-  });
-
-  if (!user) throw new Error("User not found");
-
   try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
+
     const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+
+    if (!user) throw new Error("User not found");
+
+    const userWithIndustry = await db.user.findUnique({
       where: {
         clerkUserId: userId,
       },
@@ -88,7 +88,7 @@ export async function getUserOnboardingStatus() {
     });
 
     return {
-      isOnboarded: !!user?.industry,
+      isOnboarded: !!userWithIndustry?.industry,
     };
   } catch (error) {
     console.error("Error checking onboarding status:", error);
