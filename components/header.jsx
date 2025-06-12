@@ -96,7 +96,7 @@ export default async function Header() {
             <UserButton
               appearance={{
                 elements: {
-                  avatarBox: "w-10 h-10",
+                  avatarBox: "w-9 h-9",
                   userButtonPopoverCard: "shadow-xl",
                   userPreviewMainIdentifier: "font-semibold",
                 },
