@@ -11,6 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "GradAi - AI Career Coach",
   description: "",
+  // Added Content Security Policy to allow necessary scripts for testing
+  contentSecurityPolicy: "script-src 'self' 'unsafe-eval' 'unsafe-inline';",
 };
 
 export default function RootLayout({ children }) {
