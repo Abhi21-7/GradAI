@@ -67,16 +67,29 @@ export async function updateUser(data) {
   }
 }
 
+export async function createUserIfNotExists(userId) {
+  let user = await db.user.findUnique({
+    where: { clerkUserId: userId },
+  });
+
+  if (!user) {
+    user = await db.user.create({
+      data: {
+        clerkUserId: userId,
+        // email field omitted to avoid unique constraint error
+      },
+    });
+  }
+
+  return user;
+}
+
 export async function getUserOnboardingStatus() {
   try {
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorized");
 
-    const user = await db.user.findUnique({
-      where: { clerkUserId: userId },
-    });
-
-    if (!user) throw new Error("User not found");
+    await createUserIfNotExists(userId);
 
     const userWithIndustry = await db.user.findUnique({
       where: {
