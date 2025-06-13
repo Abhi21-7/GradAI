@@ -16,6 +16,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const currentYear = new Date().getFullYear();
   return (
     <ClerkProvider
       appearance={{
@@ -37,9 +38,9 @@ export default function RootLayout({ children }) {
             <main className="min-h-screen">{children}</main>
             <Toaster richColors />
 
-            <footer className="bg-muted/50 mt-2 py-10">
+            <footer className="bg-muted/50 mt-2 py-7">
               <div className="container mx-auto px-4 text-center text-gray-200">
-                <p>Made with 💗 by Abhishek</p>
+                <p>Copyright &copy; {currentYear} GradAI - All rights reserved!</p>
               </div>
             </footer>
           </ThemeProvider>
