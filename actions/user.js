@@ -59,7 +59,7 @@ export async function updateUser(data) {
       }
     );
 
-    revalidatePath("https://grad-ai-seven.vercel.app/");
+    revalidatePath("https://grad-ai-seven.vercel.app/dashboard");
     return result.user;
   } catch (error) {
     console.error("Error updating user and industry:", error.message);
