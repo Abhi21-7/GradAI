@@ -25,7 +25,7 @@ export default async function Header() {
   return (
     <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/">
+        <Link href="https://grad-ai-seven.vercel.app/">
           <Image
             src={"/logo.png"}
             alt="GradAI Logo"
@@ -101,7 +101,7 @@ export default async function Header() {
                   userPreviewMainIdentifier: "font-semibold",
                 },
               }}
-              afterSignOutUrl="/"
+              afterSignOutUrl="https://grad-ai-seven.vercel.app/"
             />
           </SignedIn>
         </div>
