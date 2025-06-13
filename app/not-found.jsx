@@ -10,7 +10,7 @@ export default function NotFound() {
         Oops! The page you&apos;re looking for doesn&apos;t exist or has been
         moved.
       </p>
-      <Link href="https://grad-ai-seven.vercel.app/dashboard">
+      <Link href="https://grad-ai-seven.vercel.app/">
         <Button>Return Home</Button>
       </Link>
     </div>
